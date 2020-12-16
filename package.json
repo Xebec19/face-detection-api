@@ -21,6 +21,8 @@
   "homepage": "https://github.com/Xebec19/face-detection-api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.6"
+    "knex": "^0.21.13",
+    "nodemon": "^2.0.6",
+    "pg": "^8.5.1"
   }
 }
