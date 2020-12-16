@@ -45,5 +45,19 @@ app.post('/register',(req,res) => {  //to register new users
 	.catch(err => res.status(400).json(`There is an error: ${err}`))
 })
 
+app.post('/login',(req,res) => {
+
+	const recv = req.body;  //alias for request
+	db('users')  //name of database constant & table
+	.where({  //to check email and password
+	email: recv.email,
+	password:  recv.password
+	})
+	.select('email','name','entries')  //return email, name and entries
+	.then(resp => {
+		res.status(200).json(resp[0])  //respond with users details if successful
+	})
+	.catch(err => res.status(400).json(`There is an error: ${err}`))  //to show error if any occured
+})
 
 app.listen(port ,() => {console.log(`Server is running at ${port}`)})  //to print port number
