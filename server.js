@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import knex from  'knex';  //query builder
 
 const app = express();
@@ -16,6 +17,7 @@ var db = knex({
 app.use(express.urlencoded({extended:false}));  //alternative for body-parsar
 app.use(express.json());
 
+app.use(cors());  //to allow front end to access backend
 
 app.get('/',(req,res) => {  //to check that server is running
 	res.send("Hello World!");
