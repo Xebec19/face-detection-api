@@ -3,7 +3,8 @@ import cors from 'cors';
 import knex from  'knex';  //query builder
 
 const app = express();
-const port = process.env.port || 3000;  //PORT NUMBER
+const PORT = process.env.PORT || 3000;  //PORT NUMBER
+const host = '0.0.0.0'
 var db = knex({
   client: 'pg',  //pg stands for postgresql
   connection: {
@@ -62,4 +63,4 @@ app.post('/login',(req,res) => {
 	.catch(err => res.status(400).json(`There is an error: ${err}`))  //to show error if any occured
 })
 
-app.listen(port ,() => {console.log(`Server is running at ${port}`)})  //to print port number
+app.listen(PORT, host ,"0.0.0.0",function(){console.log(`Server is running at ${PORT} & ${host}`);});  //to print port number
